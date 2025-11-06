@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Expression Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "react/": "https://aistudiocdn.com/react@^19.1.1/",
+          "react": "https://aistudiocdn.com/react@^19.1.1",
+          "@google/genai": "https://aistudiocdn.com/@google/genai@^1.20.0",
+          "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/"
+        }
+      }
+    </script>
+    <style>
+      /* Rain Animation */
+      @keyframes fall {
+        from { transform: translateY(-10vh) translateX(var(--tw-translate-x)); }
+        to { transform: translateY(110vh) translateX(var(--tw-translate-x)); }
+      }
+      .rain {
+        position: absolute;
+        width: 1px;
+        height: 50px;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4));
+        animation: fall 1s linear infinite;
+      }
+
+      /* UI Animations */
+      @keyframes fade-in-blur {
+        from { opacity: 0; transform: translateY(20px) scale(0.98); filter: blur(5px); }
+        to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+      }
+      .fade-in-blur {
+        animation: fade-in-blur 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        opacity: 0;
+      }
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.4); }
+        50% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(20, 184, 166, 0); }
+      }
+      .animate-pulse-glow {
+        animation: pulse 2s infinite;
+      }
+      
+      /* Shimmer Animation for Loaders */
+      @keyframes shimmer-move {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+      }
+      .shimmer-overlay::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: translateX(-100%);
+        background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+        animation: shimmer-move 1.5s infinite;
+      }
+
+      /* Modal Animations */
+      @keyframes fade-in-backdrop {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .fade-in-backdrop {
+        animation: fade-in-backdrop 0.3s ease-out forwards;
+      }
+      @keyframes zoom-in {
+        from { transform: scale(0.8) translateY(20px); opacity: 0; }
+        to { transform: scale(1) translateY(0); opacity: 1; }
+      }
+      .zoom-in {
+        animation: zoom-in 0.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      }
+
+      /* Page Watermark */
+      .page-watermark {
+        position: fixed;
+        top: 50%;
+        writing-mode: vertical-lr;
+        font-family: monospace;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: rgb(51 65 85 / 0.5);
+        pointer-events: none;
+        user-select: none;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        z-index: 0;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-900 transition-colors duration-500 bg-gradient-to-br from-slate-900 to-slate-800">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

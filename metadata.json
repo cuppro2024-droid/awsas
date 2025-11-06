@@ -1,0 +1,7 @@
+{
+  "name": "Copy of AI Expression Generator",
+  "description": "An AI-powered web application that takes a model's photo and generates a variety of expressions and poses based on predefined prompts. Users can also add an optional style prompt for creative variations.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
